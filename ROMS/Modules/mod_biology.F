@@ -104,7 +104,6 @@
 **                                                                    **
 ************************************************************************
 */
-
 #ifdef BIOLOGY
 # if defined BIO_FENNEL
 #  include <fennel_mod.h>
@@ -122,6 +121,8 @@
 #  include <npzd_Powell_mod.h>
 # elif defined RED_TIDE
 #  include <red_tide_mod.h>
+# elif defined BIO_UMAINE
+#  include <umaine_mod.h>
 # else
       MODULE mod_biology
       END MODULE mod_biology

@@ -2855,6 +2855,8 @@
 #  include <npzd_Powell_def.h>
 # elif defined RED_TIDE
 #  include <red_tide_def.h>
+# elif defined BIO_UMAINE
+#  include <umaine_def.h>
 # endif
 #endif
 

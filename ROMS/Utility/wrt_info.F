@@ -1304,6 +1304,8 @@
 #  include <npzd_Powell_wrt.h>
 # elif defined RED_TIDE
 #  include <red_tide_wrt.h>
+# elif defined BIO_UMAINE
+#  include <umaine_wrt.h>
 # endif
 #endif
 

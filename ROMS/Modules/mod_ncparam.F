@@ -2360,6 +2360,8 @@
 #  include <npzd_iron_var.h>
 # elif defined RED_TIDE
 #  include <red_tide_var.h>
+# elif defined BIO_UMAINE
+#  include <umaine_var.h>
 # endif
 #endif
 

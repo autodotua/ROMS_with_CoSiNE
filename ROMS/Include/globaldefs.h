@@ -807,7 +807,8 @@
     defined NPZD_FRANKS || \
     defined NPZD_IRON   || \
     defined NPZD_POWELL || \
-    defined RED_TIDE
+    defined RED_TIDE    || \
+    defined BIO_UMAINE
 # define BIOLOGY
 #endif
 

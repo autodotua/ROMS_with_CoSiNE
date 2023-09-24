@@ -126,7 +126,7 @@
           real(r8), pointer :: uwave(:,:)
           real(r8), pointer :: vwave(:,:)
 # endif
-# if defined BIO_FENNEL && defined CARBON
+# if (defined BIO_FENNEL || defined BIO_UMAINE) && defined CARBON
           real(r8), pointer :: pH(:,:)
 # endif
 # ifdef RED_TIDE
@@ -471,7 +471,7 @@
       Dmem(ng)=Dmem(ng)+size2d
 # endif
 
-# if defined BIO_FENNEL && defined CARBON
+# if (defined BIO_FENNEL || defined BIO_UMAINE) && defined CARBON
       allocate ( OCEAN(ng) % pH(LBi:UBi,LBj:UBj) )
       Dmem(ng)=Dmem(ng)+size2d
 # endif
@@ -1596,7 +1596,7 @@
             OCEAN(ng) % uwave(i,j) = IniVal
             OCEAN(ng) % vwave(i,j) = IniVal
 #endif
-#if defined BIO_FENNEL && defined CARBON && defined SOLVE3D
+#if (defined BIO_FENNEL || defined BIO_UMAINE) && defined CARBON && defined SOLVE3D
             OCEAN(ng) % pH(i,j) = 8.0_r8
 #endif
 #ifdef RED_TIDE
