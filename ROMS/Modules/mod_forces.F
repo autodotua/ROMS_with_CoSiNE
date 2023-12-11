@@ -348,6 +348,13 @@
 #  endif
 # endif
 
+#ifdef NFLUX
+          real(r8), pointer :: NO3_airsea(:,:)
+          real(r8), pointer :: NO3_airseaG(:,:,:)          
+          real(r8), pointer :: NH4_airsea(:,:)
+          real(r8), pointer :: NH4_airseaG(:,:,:)
+#endif
+
 # if defined RED_TIDE && defined DAILY_SHORTWAVE
           real(r8), pointer :: srflx_avg(:,:)
           real(r8), pointer :: srflxG_avg(:,:,:)
@@ -790,6 +797,19 @@
 #   endif
 #  endif
 # endif
+
+#ifdef NFLUX
+      allocate( FORCES(ng) % NO3_airsea(LBi:UBi,LBj:UBj) )
+      Dmem(ng)=Dmem(ng)+size2d
+      allocate( FORCES(ng) % NO3_airseaG(LBi:UBi,LBj:UBj,2) )
+      Dmem(ng)=Dmem(ng)+size2d
+
+      allocate( FORCES(ng) % NH4_airsea(LBi:UBi,LBj:UBj) )
+      Dmem(ng)=Dmem(ng)+size2d
+      allocate( FORCES(ng) % NH4_airseaG(LBi:UBi,LBj:UBj,2) )
+      Dmem(ng)=Dmem(ng)+size2d
+#endif
+
 
 # if defined RED_TIDE && defined DAILY_SHORTWAVE
       allocate ( FORCES(ng) % srflx_avg(LBi:UBi,LBj:UBj) )
@@ -1357,6 +1377,15 @@
       IF (.not.destroy(ng, FORCES(ng)%srflxG, MyFile,                   &
      &                 __LINE__, 'FORCES(ng)%srflxG')) RETURN
 #   endif
+
+
+#ifdef NFLUX
+      IF (.not.destroy(ng, FORCES(ng)%NO3_airsea, MyFile,               &
+     &                 __LINE__, 'FORCES(ng)%NO3_airsea')) RETURN
+      IF (.not.destroy(ng, FORCES(ng)%NH4_airsea, MyFile,               &
+     &                 __LINE__, 'FORCES(ng)%NH4_airsea')) RETURN
+#endif
+
 
 #   ifdef ICE_ALBEDO
       IF (.not.destroy(ng, FORCES(ng)%albedo, MyFile,                   &
@@ -1952,6 +1981,12 @@
 #endif
 
 #ifdef SOLVE3D
+
+#ifdef NFLUX
+            FORCES(ng) % NO3_airsea(i,j) = IniVal
+            FORCES(ng) % NH4_airsea(i,j) = IniVal
+#endif
+
 # ifdef SHORTWAVE
             FORCES(ng) % srflx(i,j) = IniVal
 #  ifndef ANA_SRFLUX

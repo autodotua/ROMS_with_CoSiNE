@@ -437,6 +437,8 @@
       integer  :: id2dRV        ! 2D relative vorticity
       integer  :: id3dPV        ! 3D potential vorticity
       integer  :: id3dRV        ! 3D relative vorticity
+      integer  :: idNO3fx       ! NO3 air-sea flux
+      integer  :: idNH4fx       ! NH4 air-sea flux
 !
 !  Last used variable ID counter.
 !
@@ -1896,6 +1898,11 @@
             idSSSc=varid
           CASE ('idSSTc')
             idSSTc=varid
+          CASE ('idNO3fx')
+            idNO3fx=varid
+          CASE ('idNH4fx')
+            idNH4fx=varid
+            
 #if defined AD_SENSITIVITY   || defined I4DVAR_ANA_SENSITIVITY || \
     defined OPT_OBSERVATIONS || defined SENSITIVITY_4DVAR      || \
     defined SO_SEMI

@@ -186,6 +186,10 @@
      &                  GRID(ng) % z_r,                                 &
      &                  GRID(ng) % z_w,                                 &
      &                  FORCES(ng) % srflx,                             &
+#if defined NFLUX
+     &                  FORCES(ng) % NO3_airsea,                        &
+     &                  FORCES(ng) % NH4_airsea,                        &
+#endif
 #if defined CARBON || defined OXYGEN
 # ifdef BULK_FLUXES
      &                  FORCES(ng) % Uwind,                             &
@@ -226,6 +230,9 @@
 # endif
 #endif
      &                        Hz, z_r, z_w, srflx,                      &
+#if defined NFLUX
+     &                        NO3_airsea, NH4_airsea,                   &
+#endif
 #if defined CARBON || defined OXYGEN
 # ifdef BULK_FLUXES
      &                        Uwind, Vwind,                             &
@@ -270,6 +277,10 @@
       real(r8), intent(in) :: z_r(LBi:,LBj:,:)
       real(r8), intent(in) :: z_w(LBi:,LBj:,0:)
       real(r8), intent(in) :: srflx(LBi:,LBj:)
+# ifdef NFLUX
+      real(r8), intent(in) :: NO3_airsea(LBi:,LBj:)
+      real(r8), intent(in) :: NH4_airsea(LBi:,LBj:)
+# endif
 # if defined CARBON || defined OXYGEN
 #  ifdef BULK_FLUXES
       real(r8), intent(in) :: Uwind(LBi:,LBj:)
@@ -301,6 +312,10 @@
       real(r8), intent(in) :: z_r(LBi:UBi,LBj:UBj,UBk)
       real(r8), intent(in) :: z_w(LBi:UBi,LBj:UBj,0:UBk)
       real(r8), intent(in) :: srflx(LBi:UBi,LBj:UBj)
+# ifdef NFLUX
+      real(r8), intent(in) :: NO3_airsea(LBi:UBi,LBj:UBj)
+      real(r8), intent(in) :: NH4_airsea(LBi:UBi,LBj:UBj)
+# endif
 # if defined CARBON || defined OXYGEN
 #  ifdef BULK_FLUXES
       real(r8), intent(in) :: Uwind(LBi:UBi,LBj:UBj)

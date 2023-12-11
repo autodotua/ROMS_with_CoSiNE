@@ -264,6 +264,22 @@
       IF (FoundError(exit_flag, NoError, __LINE__, MyFile)) RETURN
 #   endif
 
+#   ifdef NFLUX
+      CALL set_2dfld_tile(ng, tile, iNLM, idNO3fx,                      &
+     &                    LBi, UBi, LBj, UBj,                           &
+     &                    FORCES(ng)%NO3_airseaG,                       &
+     &                    FORCES(ng)%NO3_airsea,                        &
+     &                    update)
+      IF (FoundError(exit_flag, NoError, __LINE__, MyFile)) RETURN
+
+      CALL set_2dfld_tile(ng, tile, iNLM, idNH4fx,                      &
+     &                    LBi, UBi, LBj, UBj,                           &
+     &                    FORCES(ng)%NH4_airseaG,                       &
+     &                    FORCES(ng)%NH4_airsea,                        &
+     &                    update)
+      IF (FoundError(exit_flag, NoError, __LINE__, MyFile)) RETURN
+#   endif
+
 #   ifdef DIURNAL_SRFLUX
 !
 !  Modulate the averaged shortwave radiation flux by the local diurnal

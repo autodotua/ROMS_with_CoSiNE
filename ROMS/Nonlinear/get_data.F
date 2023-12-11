@@ -438,6 +438,33 @@
       END IF
 # endif
 
+# if defined NFLUX
+      CALL get_2dfld (ng, iNLM, idNO3fx, FRCncid(idNO3fx,ng),             &
+#  if defined PIO_LIB && defined DISTRIBUTE
+     &                FRCpioFile(idNO3fx,ng),                            &
+#  endif
+     &                nFfiles(ng), FRC(1,ng), update(1),                &
+     &                LBi, UBi, LBj, UBj, 2, 1,                         &
+#  ifdef MASKING
+     &                GRID(ng) % rmask,                                 &
+#  endif
+     &                FORCES(ng) % NO3_airseaG)
+      IF (FoundError(exit_flag, NoError, __LINE__, MyFile)) RETURN
+
+      CALL get_2dfld (ng, iNLM, idNH4fx, FRCncid(idNH4fx,ng),             &
+#  if defined PIO_LIB && defined DISTRIBUTE
+     &                FRCpioFile(idNH4fx,ng),                            &
+#  endif
+     &                nFfiles(ng), FRC(1,ng), update(1),                &
+     &                LBi, UBi, LBj, UBj, 2, 1,                         &
+#  ifdef MASKING
+     &                GRID(ng) % rmask,                                 &
+#  endif
+     &                FORCES(ng) % NH4_airseaG)
+      IF (FoundError(exit_flag, NoError, __LINE__, MyFile)) RETURN
+# endif
+
+
 # if defined RED_TIDE && defined DAILY_SHORTWAVE
 !
 !  Daily-averaged Surface solar shortwave radiation.

@@ -1145,7 +1145,8 @@
         Fscale(idLhea,ng)=cff*Fscale(idLhea,ng)
         Fscale(idShea,ng)=cff*Fscale(idShea,ng)
         Fscale(iddQdT,ng)=cff*Fscale(iddQdT,ng)
-
+        Fscale(idNO3fx,ng)=cff*Fscale(idNO3fx,ng)
+        Fscale(idNH4fx,ng)=cff*Fscale(idNH4fx,ng) 
 #ifdef SOLVE3D
 !
 !  Determine the number of climatology tracers to process.
