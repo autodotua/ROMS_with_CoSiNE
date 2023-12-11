@@ -1661,7 +1661,7 @@ metadata:
   - variable:       NO3_airsea                                       # Input/Output
     standard_name:  NO3_flux_at_sea_water_surface
     long_name:      NO3 air-sea flux
-    units:          millimole N day-1 meter-2                        # Input:[millimole/m2/day]
+    units:          millimole_N day-1 meter-2                        # Input:[millimole/m2/day]
     field:          NO3 air-sea flux                              
     time:           ocean_time                                     
     index_code:     idNO3fx
@@ -1672,7 +1672,7 @@ metadata:
   - variable:       NH4_airsea                                        # Input/Output
     standard_name:  NH4_flux_at_sea_water_surface
     long_name:      NH4 air-sea flux
-    units:          millimole N day-1 meter-2                       # Input:[millimole/m2/day]
+    units:          millimole_N day-1 meter-2                       # Input:[millimole/m2/day]
     field:          NH4 air-sea flux
     time:           ocean_time
     index_code:     idNH4fx
@@ -4135,6 +4135,17 @@ metadata:
     field:          CO2 air-sea flux
     time:           ocean_time
     index_code:     iDbio2(iCOfx)
+    type:           r2dvar
+    add_offset:     0.0d0
+    scale:          1.0d0
+
+  - variable:       Sur_N_added                                       # Input/Output
+    standard_name:  suface_mole_concentration_added_concentration_of_NO3_and_NH4
+    long_name:      surface NO3+NH4 added concentration
+    units:          millimole_N meter-3                               # [millimole/m2/day]
+    field:          surface NO3+NH4 added concentration
+    time:           ocean_time
+    index_code:     iDbio2(iSNAC)
     type:           r2dvar
     add_offset:     0.0d0
     scale:          1.0d0

@@ -318,6 +318,10 @@
           CASE ('iDbio2(ipCO2)')
             iDbio2(ipCO2)=varid
 # endif
+# ifdef NFLUX
+          CASE ('iDbio2(iSNAC)')
+            iDbio2(iSNAC)=varid
+# endif
 # ifdef OXYGEN
           CASE ('iDbio2(iO2fx)')
             iDbio2(iO2fx)=varid

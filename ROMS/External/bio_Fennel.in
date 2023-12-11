@@ -428,6 +428,7 @@ Dout(iTvdif) == 15*T    ! ..., NO3_vdiff, ...     vertical diffusion
 ! Logical switches (TRUE/FALSE) to activate writing of time-averaged,
 ! biological processes diagnostics terms into DIAGNOSTIC output file [Ngrids].
 
+Dout(iSNAC) == T        ! surface NO3+NH4 added concentration
 Dout(iCOfx) == T        ! CO2_airsea         air-sea CO2 flux
 Dout(iDNIT) == T        ! denitrification    denitrification flux
 Dout(ipCO2) == T        ! pCO2               CO2 partial pressure

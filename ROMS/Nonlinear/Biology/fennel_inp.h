@@ -512,6 +512,19 @@
                 Dout(i,ng)=Lbio(ng)
               END DO
 # endif
+# ifdef NFLUX
+            CASE ('Dout(iSNAC)')
+              IF (iDbio2(iSNAC).eq.0) THEN
+                IF (Master) WRITE (out,40) 'iDbio2(iSNAC)'
+                exit_flag=5
+                RETURN
+              END IF
+              Npts=load_l(Nval, Cval, Ngrids, Lbio)
+              i=iDbio2(iSNAC)
+              DO ng=1,Ngrids
+                Dout(i,ng)=Lbio(ng)
+              END DO
+# endif
 # ifdef DENITRIFICATION
             CASE ('Dout(iDNIT)')
               IF (iDbio2(iDNIT).eq.0) THEN

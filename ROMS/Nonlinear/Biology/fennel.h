@@ -895,11 +895,19 @@
 #endif
               END DO
             END IF
-!           WRITE (*,*) NO3_airsea(i,j),dtdays,Hz_inv(i,N(ng))
+#ifdef NFLUX
 !           millimole N day-1 meter-2 * (1/meter)
             Bio(i,N(ng),iNO3_)=Bio(i,N(ng),iNO3_)+NO3_airsea(i,j)*dtdays*Hz_inv(i,N(ng))
             Bio(i,N(ng),iNH4_)=Bio(i,N(ng),iNH4_)+NH4_airsea(i,j)*dtdays*Hz_inv(i,N(ng))
-          END DO
+# ifdef DIAGNOSTICS_BIO
+!           WRITE (*,*) NO3_airsea(i,j),dtdays,Hz_inv(i,N(ng)),NO3_airsea(i,j)*dtdays*Hz_inv(i,N(ng))+NH4_airsea(i,j)*dtdays*Hz_inv(i,N(ng))
+            DiaBio2d(i,j,iSNAC)=NO3_airsea(i,j)*dtdays*Hz_inv(i,N(ng))+NH4_airsea(i,j)*dtdays*Hz_inv(i,N(ng))
+#  ifdef WET_DRY
+            DiaBio2d(i,j,iSNAC)=DiaBio2d(i,j,iSNAC)*rmask_full(i,j)
+#  endif
+# endif
+#endif
+      END DO
 !
 !-----------------------------------------------------------------------
 !  Phytoplankton grazing by zooplankton (rate: ZooGR), phytoplankton

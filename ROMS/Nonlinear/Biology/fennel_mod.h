@@ -106,6 +106,7 @@
       integer, allocatable :: iDbio2(:)       ! 2D biological terms
 
       integer  :: iCOfx                       ! air-sea CO2 flux
+      integer  :: iSNAC                       ! surface NO3+NH4 added concentration
       integer  :: iDNIT                       ! denitrification flux
       integer  :: ipCO2                       ! partial pressure of CO2
       integer  :: iO2fx                       ! air-sea O2 flux
@@ -243,6 +244,9 @@
 # ifdef OXYGEN
       NDbio2d=NDbio2d+1
 # endif
+# ifdef NFLUX
+      NDbio2d=NDbio2d+1
+# endif
 !
 !  Initialize biology diagnostic indices.
 !
@@ -258,6 +262,10 @@
 # endif
 # ifdef OXYGEN
       iO2fx=ic+1
+      ic=ic+1
+# endif
+# ifdef NFLUX
+      iSNAC=ic+1
 # endif
 #endif
 !
