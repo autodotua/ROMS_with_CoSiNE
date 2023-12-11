@@ -895,6 +895,10 @@
 #endif
               END DO
             END IF
+!           WRITE (*,*) NO3_airsea(i,j),dtdays,Hz_inv(i,N(ng))
+!           millimole N day-1 meter-2 * (1/meter)
+            Bio(i,N(ng),iNO3_)=Bio(i,N(ng),iNO3_)+NO3_airsea(i,j)*dtdays*Hz_inv(i,N(ng))
+            Bio(i,N(ng),iNH4_)=Bio(i,N(ng),iNH4_)+NH4_airsea(i,j)*dtdays*Hz_inv(i,N(ng))
           END DO
 !
 !-----------------------------------------------------------------------

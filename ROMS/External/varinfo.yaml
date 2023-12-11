@@ -1658,10 +1658,10 @@ metadata:
     add_offset:     0.0d0
     scale:          1.0d0
 
-  - variable:       NO3_airsea                                           # Input/Output
-    standard_name:  net_downward_nitrate_flux_at_sea_water_surface
+  - variable:       NO3_airsea                                       # Input/Output
+    standard_name:  NO3_flux_at_sea_water_surface
     long_name:      NO3 air-sea flux
-    units:          millimole_nitrogen meter-2 day-1            # Input:[millimole/m2/day]
+    units:          millimole N day-1 meter-2                        # Input:[millimole/m2/day]
     field:          NO3 air-sea flux                              
     time:           ocean_time                                     
     index_code:     idNO3fx
@@ -1669,17 +1669,17 @@ metadata:
     add_offset:     0.0d0
     scale:          1.0d0
  
-  - variable:       NH4_airsea                                           # Input/Output
-    standard_name:  net_downward_nh4_flux_at_sea_water_surface
+  - variable:       NH4_airsea                                        # Input/Output
+    standard_name:  NH4_flux_at_sea_water_surface
     long_name:      NH4 air-sea flux
-    units:          millimole_nh4 meter-2 day-1            # Input:[millimole/m2/day]
+    units:          millimole N day-1 meter-2                       # Input:[millimole/m2/day]
     field:          NH4 air-sea flux
     time:           ocean_time
     index_code:     idNH4fx
     type:           r2dvar
     add_offset:     0.0d0
     scale:          1.0d0
-    
+
   - variable:       lwrad_down                                       # Input
     standard_name:  surface_downward_longwave_flux
     long_name:      downward longwave radiation flux

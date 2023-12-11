@@ -1125,7 +1125,7 @@
 !  Convert momentum stresses and tracer flux scales to kinematic
 !  Values. Recall, that all the model fluxes are kinematic.
 !
-        cff=1.0_r8/rho0
+        cff=1.0_r8/rho0 !rho0=1025 kg m-3, cff=9.7560975609756080E-004
         Fscale(idUsms,ng)=cff*Fscale(idUsms,ng)
         Fscale(idVsms,ng)=cff*Fscale(idVsms,ng)
         Fscale(idUbms,ng)=cff*Fscale(idUbms,ng)
@@ -1136,6 +1136,9 @@
         Fscale(idVbws,ng)=cff*Fscale(idVbws,ng)
         Fscale(idUbcs,ng)=cff*Fscale(idUbcs,ng)
         Fscale(idVbcs,ng)=cff*Fscale(idVbcs,ng)
+! 由于Nflux是millimole N day-1 meter-2，生态变量是millimole N meter-3，因此不需要转换为质量
+!       Fscale(idNO3fx,ng)=cff*Fscale(idNO3fx,ng)
+!       Fscale(idNH4fx,ng)=cff*Fscale(idNH4fx,ng) 
         cff=1.0_r8/(rho0*Cp)
         Fscale(idTsur(itemp),ng)=cff*Fscale(idTsur(itemp),ng)
         Fscale(idTbot(itemp),ng)=cff*Fscale(idTbot(itemp),ng)
@@ -1145,8 +1148,6 @@
         Fscale(idLhea,ng)=cff*Fscale(idLhea,ng)
         Fscale(idShea,ng)=cff*Fscale(idShea,ng)
         Fscale(iddQdT,ng)=cff*Fscale(iddQdT,ng)
-        Fscale(idNO3fx,ng)=cff*Fscale(idNO3fx,ng)
-        Fscale(idNH4fx,ng)=cff*Fscale(idNH4fx,ng) 
 #ifdef SOLVE3D
 !
 !  Determine the number of climatology tracers to process.
